@@ -268,10 +268,6 @@ function galleryCard(image, index) {
   return `
     <figure class="gallery-card reveal ${index === 3 ? "wide" : ""}">
       <img src="${image.src}" alt="${image.title}" loading="lazy">
-      <figcaption>
-        <strong>${image.title}</strong>
-        <span>${image.caption}</span>
-      </figcaption>
     </figure>`;
 }
 
