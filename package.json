@@ -1,0 +1,10 @@
+{
+  "name": "alex-parke-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.cjs",
+    "start": "node server.cjs"
+  },
+  "devDependencies": {}
+}

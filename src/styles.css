@@ -1,0 +1,560 @@
+:root {
+  --ink: #090807;
+  --night: #13100f;
+  --wine: #3b171b;
+  --brass: #c89a4d;
+  --paper: #efe2c7;
+  --smoke: #a39a8b;
+  --teal: #244047;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: .11;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.09) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.06) 0 1px, transparent 1px);
+  background-size: 4px 4px, 7px 7px;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+select { font: inherit; }
+::selection { background: rgba(200,154,77,.35); color: #fff8eb; }
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  border-bottom: 1px solid rgba(239,226,199,.1);
+  background: rgba(9,8,7,.76);
+  backdrop-filter: blur(18px);
+}
+.nav {
+  max-width: 1180px;
+  margin: 0 auto;
+  min-height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.mark {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(200,154,77,.55);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: var(--brass);
+  font-weight: 800;
+}
+.brand strong { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; line-height: 1; }
+.brand span span { display: block; margin-top: 4px; color: var(--smoke); font-size: 11px; text-transform: uppercase; letter-spacing: .2em; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a, .book-mini {
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: rgba(239,226,199,.72);
+  font-size: 14px;
+  transition: .25s ease;
+}
+.nav-links a:hover { background: rgba(239,226,199,.06); color: var(--paper); }
+.book-mini { border: 1px solid rgba(200,154,77,.5); color: var(--brass); font-weight: 700; }
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(239,226,199,.12);
+  border-radius: 999px;
+  background: rgba(9,8,7,.36);
+}
+.lang-toggle button {
+  min-width: 38px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(239,226,199,.7);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.lang-toggle button.active {
+  background: var(--brass);
+  color: var(--ink);
+}
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(239,226,199,.16); background: transparent; color: var(--paper); }
+.mobile-menu { display: none; padding: 10px 24px 22px; border-top: 1px solid rgba(239,226,199,.1); }
+.mobile-menu a { display: block; padding: 13px 10px; border-radius: 8px; color: var(--paper); }
+.mobile-menu a:hover { background: rgba(239,226,199,.06); }
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+  background-image:
+    linear-gradient(90deg, rgba(9,8,7,.98) 0%, rgba(9,8,7,.82) 35%, rgba(9,8,7,.18) 76%),
+    linear-gradient(180deg, rgba(9,8,7,.18), rgba(9,8,7,.98)),
+    url("../assets/alex-on-gig.jpeg");
+  background-size: cover;
+  background-position: center right 24%;
+}
+.hero-inner, .section-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 64px;
+  padding: 150px 0 86px;
+}
+.kicker, .section-label {
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  font-size: 12px;
+  font-weight: 800;
+}
+.hero h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 650;
+  line-height: .96;
+  margin: 0;
+}
+.hero h1 { margin-top: 18px; font-size: clamp(64px, 8vw, 116px); max-width: 820px; }
+.subtitle { margin: 28px 0 0; max-width: 650px; font-size: clamp(21px, 3vw, 30px); line-height: 1.35; color: rgba(239,226,199,.9); }
+.rotating { min-height: 36px; margin-top: 22px; color: var(--brass); font-size: 20px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 42px; }
+.btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 0 22px;
+  border: 1px solid rgba(239,226,199,.18);
+  background: rgba(9,8,7,.34);
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 14px;
+  transition: .25s ease;
+}
+.btn.primary { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn:hover { transform: translateY(-2px); border-color: rgba(200,154,77,.7); background: rgba(200,154,77,.12); }
+.btn.primary:hover { background: var(--brass); }
+.impact {
+  align-self: end;
+  padding: 28px;
+  border-radius: 8px;
+  background: rgba(19,16,15,.66);
+  border: 1px solid rgba(239,226,199,.13);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 80px rgba(200,154,77,.18);
+}
+.impact p:last-child { margin: 18px 0 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 4vw, 44px); line-height: 1.04; }
+
+section { border-top: 1px solid rgba(239,226,199,.1); }
+.band { padding: 110px 0; background: var(--night); }
+.band.alt { background: var(--ink); }
+.two-col { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+.portrait {
+  min-height: 440px;
+  border-radius: 8px;
+  border: 1px solid rgba(239,226,199,.1);
+  background-image: linear-gradient(180deg, rgba(9,8,7,.1), rgba(9,8,7,.86)), url("../assets/alex-on-gig.jpeg");
+  background-size: cover;
+  background-position: 57% center;
+  box-shadow: 0 24px 80px rgba(200,154,77,.15);
+  position: relative;
+  overflow: hidden;
+}
+.portrait-copy { position: absolute; left: 28px; right: 28px; bottom: 26px; color: rgba(239,226,199,.76); line-height: 1.55; }
+.section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.section-label::before { content: ""; width: 42px; height: 1px; background: rgba(200,154,77,.65); }
+h2 { font-size: clamp(42px, 6vw, 76px); }
+.lead, .body-copy { color: rgba(239,226,199,.74); font-size: 18px; line-height: 1.8; }
+.body-copy { margin-top: 18px; }
+.cred-row, .language-row, .social-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.pill { border: 1px solid rgba(200,154,77,.35); color: var(--brass); border-radius: 999px; padding: 10px 15px; font-size: 14px; font-weight: 700; }
+
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card {
+  border: 1px solid rgba(239,226,199,.1);
+  background: rgba(19,16,15,.72);
+  border-radius: 8px;
+  padding: 26px;
+  transition: .28s ease;
+}
+.card:hover { transform: translateY(-5px); border-color: rgba(200,154,77,.42); background: rgba(200,154,77,.06); }
+.number { display: block; color: rgba(200,154,77,.62); font-family: "Cormorant Garamond", Georgia, serif; font-size: 50px; }
+.card h3 { margin-top: 22px; font-size: 28px; }
+.card p, .project p, .booking p, .media-card p { color: rgba(239,226,199,.66); line-height: 1.65; font-size: 14px; }
+.section-head { max-width: 780px; margin-bottom: 44px; }
+.section-head p { margin-top: 20px; }
+.project { overflow: hidden; padding: 0; }
+.project-img {
+  height: 195px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(200,154,77,.32), rgba(36,64,71,.24)),
+    linear-gradient(45deg, rgba(59,23,27,.72), rgba(9,8,7,.25));
+}
+.project-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--project-image, url("../assets/hero-alexander-parke.png")) center/cover;
+  mix-blend-mode: luminosity;
+  opacity: .84;
+  transition: .5s ease;
+}
+.project:hover .project-img::before { transform: scale(1.06); }
+.project-body { padding: 24px; }
+.tag { color: var(--brass); font-size: 11px; text-transform: uppercase; letter-spacing: .18em; font-weight: 800; }
+.project h3 { margin-top: 12px; font-size: 31px; }
+
+.lesson-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.lesson-chip, .booking {
+  min-height: 88px;
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background: rgba(9,8,7,.48);
+  padding: 22px;
+}
+.lesson-chip strong,
+.booking strong {
+  display: block;
+}
+.testimonial { grid-column: 1 / -1; padding: 28px; background: rgba(19,16,15,.66); border: 1px solid rgba(239,226,199,.13); border-radius: 8px; }
+.testimonial p { font-family: "Cormorant Garamond", Georgia, serif; font-size: 29px; line-height: 1.18; margin: 10px 0; }
+.booking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.icon { color: var(--brass); font-size: 24px; display: block; margin-bottom: 18px; }
+
+.media-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 18px; }
+.media-grid-spaced { margin-top: 18px; }
+.video {
+  aspect-ratio: 16/9;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(9,8,7,.9), rgba(59,23,27,.5)),
+    linear-gradient(90deg, rgba(200,154,77,.18), rgba(36,64,71,.22));
+}
+.play {
+  width: 78px;
+  height: 78px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+.media-side { display: grid; gap: 18px; }
+.media-card { border: 1px solid rgba(239,226,199,.1); background: var(--night); padding: 24px; border-radius: 8px; }
+.recording-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.recording-card {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(200,154,77,.08), rgba(36,64,71,.12)),
+    rgba(19,16,15,.74);
+  padding: 24px;
+  transition: .28s ease;
+}
+.recording-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(200,154,77,.44);
+}
+.recording-card h3 { margin-top: 12px; font-size: 28px; }
+.recording-card p { color: rgba(239,226,199,.66); line-height: 1.6; font-size: 14px; }
+.recording-card span { margin-top: 18px; color: var(--brass); font-size: 13px; font-weight: 800; }
+.gallery-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.gallery-card {
+  min-height: 280px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background: var(--night);
+}
+.gallery-card.wide {
+  grid-column: span 2;
+}
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  display: block;
+  object-fit: cover;
+  transition: .5s ease;
+}
+.gallery-card:hover img {
+  transform: scale(1.04);
+}
+.gallery-card figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 54px 18px 18px;
+  background: linear-gradient(180deg, transparent, rgba(9,8,7,.92));
+}
+.gallery-card strong,
+.gallery-card span {
+  display: block;
+}
+.gallery-card strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+}
+.gallery-card span {
+  margin-top: 6px;
+  color: rgba(239,226,199,.68);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.format-list {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.format-list span {
+  border-radius: 999px;
+  border: 1px solid rgba(239,226,199,.12);
+  background: rgba(9,8,7,.42);
+  color: rgba(239,226,199,.74);
+  padding: 10px 13px;
+  font-size: 13px;
+}
+
+.contact-form {
+  padding: 28px;
+  border: 1px solid rgba(239,226,199,.13);
+  border-radius: 8px;
+  background: rgba(19,16,15,.66);
+}
+label { display: block; margin-bottom: 18px; color: rgba(239,226,199,.86); font-size: 14px; font-weight: 700; }
+input, textarea {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid rgba(239,226,199,.13);
+  border-radius: 8px;
+  background: rgba(9,8,7,.56);
+  color: var(--paper);
+  padding: 13px 14px;
+  outline: none;
+}
+select {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid rgba(239,226,199,.13);
+  border-radius: 8px;
+  background: rgba(9,8,7,.56);
+  color: var(--paper);
+  padding: 13px 14px;
+  outline: none;
+}
+input:focus, textarea:focus { border-color: var(--brass); }
+select:focus { border-color: var(--brass); }
+.hidden-field {
+  position: absolute;
+  left: -10000px;
+  height: 1px;
+  opacity: 0;
+}
+.form-status {
+  min-height: 22px;
+  margin: 16px 0 0;
+  color: var(--brass);
+  font-size: 14px;
+  font-weight: 700;
+}
+button:disabled {
+  cursor: wait;
+  opacity: .7;
+}
+.email { display: inline-flex; margin-top: 25px; color: var(--brass); font-size: 20px; font-weight: 800; }
+.contact-methods {
+  display: grid;
+  gap: 12px;
+  margin-top: 26px;
+  max-width: 520px;
+}
+.contact-method {
+  display: block;
+  border: 1px solid rgba(239,226,199,.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(200,154,77,.08), rgba(36,64,71,.09)),
+    rgba(9,8,7,.42);
+  padding: 16px 18px;
+  transition: .25s ease;
+}
+.contact-method:hover {
+  transform: translateY(-2px);
+  border-color: rgba(200,154,77,.45);
+}
+.contact-method span,
+.contact-method strong {
+  display: block;
+}
+.contact-method span {
+  color: var(--smoke);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.contact-method strong {
+  margin-top: 7px;
+  color: var(--brass);
+  font-size: clamp(16px, 2.2vw, 21px);
+  overflow-wrap: anywhere;
+}
+.footer { border-top: 1px solid rgba(239,226,199,.1); padding: 30px 24px; color: var(--smoke); }
+.footer-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; gap: 16px; }
+.support-list {
+  display: grid;
+  gap: 14px;
+}
+.support-list div {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 14px;
+  align-items: start;
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background: rgba(9,8,7,.48);
+  padding: 20px;
+}
+.support-list span {
+  width: 9px;
+  height: 9px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--brass);
+}
+.support-list p {
+  margin: 0;
+  color: rgba(239,226,199,.74);
+  line-height: 1.6;
+}
+.support-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 130px 0 80px;
+  background:
+    linear-gradient(90deg, rgba(9,8,7,.96), rgba(9,8,7,.7)),
+    url("../assets/alex-on-gig.jpeg") center right / cover;
+}
+.support-hero h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(54px, 7vw, 92px);
+  line-height: .96;
+  margin: 0;
+}
+.support-photo {
+  min-height: 500px;
+  border: 1px solid rgba(239,226,199,.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(9,8,7,.08), rgba(9,8,7,.82)),
+    url("../assets/old-site/klezmer-tres-rios.png") center / cover;
+  box-shadow: 0 24px 80px rgba(200,154,77,.18);
+}
+.support-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.support-detail-grid article {
+  border: 1px solid rgba(239,226,199,.1);
+  border-radius: 8px;
+  background: rgba(19,16,15,.72);
+  padding: 26px;
+}
+.support-detail-grid h3 {
+  font-size: 28px;
+}
+.support-detail-grid p {
+  color: rgba(239,226,199,.68);
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: .75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.focus-ring:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+
+@media (max-width: 980px) {
+  .nav-links, .book-mini, .nav > .lang-toggle { display: none; }
+  .menu-btn { display: grid; place-items: center; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu .lang-toggle { margin: 8px 0 10px; }
+  .hero-inner, .two-col, .media-grid { grid-template-columns: 1fr; }
+  .hero-inner { gap: 34px; }
+  .grid-4, .grid-3, .booking-grid, .recording-grid, .gallery-grid, .support-detail-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .brand span span { display: none; }
+  .brand strong { font-size: 21px; }
+  .hero {
+    background-image: linear-gradient(180deg, rgba(9,8,7,.7), rgba(9,8,7,.96)), url("../assets/alex-on-gig.jpeg");
+    background-position: 56% center;
+  }
+  .hero-inner, .section-inner { width: min(100% - 32px, 1180px); }
+  .hero-inner { padding-bottom: 54px; }
+  .cta-row { flex-direction: column; }
+  .btn { width: 100%; }
+  .band { padding: 78px 0; }
+  .grid-4, .grid-3, .lesson-grid, .booking-grid, .recording-grid, .gallery-grid, .support-detail-grid { grid-template-columns: 1fr; }
+  .support-hero { padding-top: 105px; }
+  .support-photo { min-height: 330px; }
+  .gallery-card.wide { grid-column: span 1; }
+  .footer-inner { flex-direction: column; }
+}
