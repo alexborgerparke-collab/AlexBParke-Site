@@ -35,15 +35,14 @@ const i18n = {
     close: "Close",
     heroSubtitle: "Clarinetist, Ethnomusicologist & International Performer",
     rotating: [
-      "Klezmer tradition, contemporary creation.",
+      "Tradition, improvisation, and contemporary sound.",
       "From New York to Sao Paulo",
       "Performance, Tradition, Research & Education",
     ],
     ctaBook: "Book a Performance",
     ctaLessons: "Lessons",
     ctaProjects: "Projects",
-    impactLabel: "Impact",
-    impact: "Klezmer tradition, contemporary creation.",
+    impact: "Tradition, improvisation, and music that brings people together.",
     portraitLabel: "Performer / Educator / Researcher",
     portraitCopy: "An artistic identity rooted in tradition, curiosity, and live musical encounter.",
     aboutLabel: "About",
@@ -62,15 +61,15 @@ const i18n = {
     lessonsPlace: "Online lessons and in-person lessons in Sao Paulo.",
     trial: "Schedule a Trial Lesson",
     whatsapp: "Ask on WhatsApp",
-    quote: "Based out of New York City, Alex Parke strives to bring delight and joy to the hearts of his audience.",
-    quoteBy: "Peer from Bard College",
+    quote: "Based out of New York City and Sao Paulo, Alex Parke strives to bring delight and joy to the hearts of his audience.",
+    quoteBy: "",
     bookingsLabel: "Performance & Bookings",
     bookingsTitle: "Jewish music that makes a celebration unforgettable.",
     bookingsLead: "Available for weddings, b'nai mitzvot, cultural events, concerts, festivals, lectures, workshops, cultural consulting, and artist residencies. Jewish music is a strong part of the work, and Alex also performs artistic projects beyond the Jewish world, including Brazilian music, jazz, improvisation, and cross-cultural concert programs.",
     bookingInquiry: "Start a Booking Inquiry",
     mediaLabel: "Media",
     mediaTitle: "Recordings, sessions, and living archives.",
-    mediaLead: "Selected releases and media from Alex's earlier site, including Bandcamp, Spotify, SoundCloud, Instagram, and YouTube links. Alex served as music director for the Honigsberg Archives and is currently working with the Stuart Manning Archives.",
+    mediaLead: "Selected recordings, sessions, photos, and archival projects, organized as a living portrait of Alex's work across performance, research, and community.",
     supportLabel: "Support",
     supportTitle: "Support.",
     supportLead: "Alex Parke works as a community builder and Jewish and Brazilian artist, developing art, building community, and bringing joy to people through klezmer, Brazilian music, archives, teaching, and live performance.",
@@ -114,15 +113,14 @@ const i18n = {
     close: "Fechar",
     heroSubtitle: "Clarinetista, Etnomusicólogo & Artista Internacional",
     rotating: [
-      "Tradição klezmer, criação contemporânea.",
+      "Tradição, improvisação e som contemporâneo.",
       "De Nova York a São Paulo",
       "Performance, tradição, pesquisa e educação",
     ],
     ctaBook: "Contratar para Show",
     ctaLessons: "Aulas",
     ctaProjects: "Projetos",
-    impactLabel: "Frase",
-    impact: "Tradição klezmer, criação contemporânea.",
+    impact: "Tradição, improvisação e música que aproxima pessoas.",
     portraitLabel: "Artista / Educador / Pesquisador",
     portraitCopy: "Uma identidade artística enraizada em tradição, curiosidade e encontro musical.",
     aboutLabel: "Sobre",
@@ -141,15 +139,15 @@ const i18n = {
     lessonsPlace: "Aulas online e presenciais em São Paulo.",
     trial: "Agendar Aula Experimental",
     whatsapp: "Perguntar no WhatsApp",
-    quote: "Baseado em Nova York, Alex Parke busca levar encanto e alegria ao coração do público.",
-    quoteBy: "Colega de Bard College",
+    quote: "Baseado em Nova York e São Paulo, Alex Parke busca levar encanto e alegria ao coração do público.",
+    quoteBy: "",
     bookingsLabel: "Shows & Contratações",
     bookingsTitle: "Música judaica para tornar uma celebração inesquecível.",
     bookingsLead: "Disponível para casamentos, b'nai mitzvot, eventos culturais, concertos, festivais, palestras, workshops, consultoria cultural e residências artísticas. A música judaica é uma parte forte do trabalho, e Alex também realiza projetos artísticos fora do universo judaico, incluindo música brasileira, jazz, improvisação e programas interculturais.",
     bookingInquiry: "Iniciar Pedido de Contratação",
     mediaLabel: "Mídia",
     mediaTitle: "Gravações, sessões e arquivos vivos.",
-    mediaLead: "Lançamentos e mídias selecionadas do site anterior de Alex, incluindo Bandcamp, Spotify, SoundCloud, Instagram e YouTube. Alex foi diretor musical dos Honigsberg Archives e atualmente trabalha com os Stuart Manning Archives.",
+    mediaLead: "Gravações, sessões, fotos e projetos de arquivo organizados como um retrato vivo do trabalho de Alex em performance, pesquisa e comunidade.",
     supportLabel: "Apoie",
     supportTitle: "Apoie.",
     supportLead: "Alex Parke atua como construtor de comunidade e artista judeu-brasileiro, desenvolvendo arte, fortalecendo comunidades e levando alegria às pessoas por meio do klezmer, da música brasileira, dos arquivos, do ensino e da performance ao vivo.",
@@ -253,9 +251,10 @@ function label(text) {
 function projectCard(project) {
   const cssImage = project.image.startsWith("assets/") ? `../${project.image}` : project.image;
   const description = currentLang === "pt" ? projectPt[project.title] || project.description : project.description;
+  const fitClass = project.imageFit === "contain" ? " fit-contain" : "";
   return `
     <article class="card project reveal">
-      <div class="project-img" style="--project-image: url('${cssImage}')" aria-hidden="true"></div>
+      <div class="project-img${fitClass}" style="--project-image: url('${cssImage}')" aria-hidden="true"></div>
       <div class="project-body">
         <p class="tag">${project.tag}</p>
         <h3>${project.title}</h3>
@@ -330,7 +329,6 @@ function render() {
             </div>
           </div>
           <aside class="impact reveal visible">
-            <p class="kicker">${t.impactLabel}</p>
             <p>${t.impact}</p>
           </aside>
         </div>
@@ -390,7 +388,7 @@ function render() {
             <blockquote class="testimonial reveal">
               <span class="icon">"</span>
               <p>${t.quote}</p>
-              <footer>${t.quoteBy}</footer>
+              ${t.quoteBy ? `<footer>${t.quoteBy}</footer>` : ""}
             </blockquote>
           </div>
         </div>

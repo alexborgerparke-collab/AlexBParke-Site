@@ -10,7 +10,7 @@ export const navItems = [
 ];
 
 export const rotatingLines = [
-  "Klezmer roots. Global sound. Live connection.",
+  "Tradition, improvisation, and contemporary sound.",
   "From New York to Sao Paulo",
   "Performance, Tradition, Research & Education",
 ];
@@ -45,13 +45,14 @@ export const projects = [
     title: "Klezmer Kabaret",
     tag: "Theater / Storytelling / Jewish Music",
     description: "A theatrical and energetic exploration of Jewish music, storytelling, humor, and performance.",
-    image: "assets/old-site/old-site-3.png",
+    image: "assets/klezmer-kabaret-stage.png",
+    imageFit: "contain",
   },
   {
     title: "SP Klezmer All Stars",
     tag: "Concerts / Festivals / Events",
     description: "High-level klezmer ensemble for concerts, festivals, and cultural events.",
-    image: "assets/alex-on-gig.jpeg",
+    image: "assets/sp-klezmer-all-stars.png",
   },
   {
     title: "Orquestra Shoshana",
@@ -69,7 +70,7 @@ export const projects = [
     title: "Honigsberg Archives",
     tag: "Archive / Yiddish Music / Research",
     description: "A cultural archive of Rosa Porozovska and Ernest Honigsberg, preserving original Yiddish compositions and arrangements under Alex's musical direction.",
-    image: "assets/old-site/old-site-5.png",
+    image: "assets/honigsberg-archives.jpg",
   },
   {
     title: "Marmelada",
@@ -170,26 +171,26 @@ export const galleryImages = [
   {
     src: "assets/old-site/old-site-1.jpeg",
     title: "Performance Portrait",
-    caption: "Imported from the previous Alex Parke website.",
+    caption: "",
   },
   {
     src: "assets/old-site/old-site-2.png",
     title: "Metropolitan Klezmer",
-    caption: "A visual from Alex's earlier site archive.",
+    caption: "",
   },
   {
     src: "assets/old-site/old-site-3.png",
     title: "Concert / Media Still",
-    caption: "Imported media image from the old Squarespace site.",
+    caption: "",
   },
   {
     src: "assets/old-site/old-site-4.jpg",
     title: "Live Performance",
-    caption: "A full-resolution performance photo from the old site.",
+    caption: "",
   },
   {
     src: "assets/old-site/old-site-5.png",
     title: "Klezmer Feature",
-    caption: "Legacy website image now preserved locally.",
+    caption: "",
   },
 ];

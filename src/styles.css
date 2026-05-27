@@ -234,6 +234,9 @@ h2 { font-size: clamp(42px, 6vw, 76px); }
   opacity: .84;
   transition: .5s ease;
 }
+.project-img.fit-contain::before {
+  background: var(--project-image, url("../assets/hero-alexander-parke.png")) center/contain no-repeat;
+}
 .project:hover .project-img::before { transform: scale(1.06); }
 .project-body { padding: 24px; }
 .tag { color: var(--brass); font-size: 11px; text-transform: uppercase; letter-spacing: .18em; font-weight: 800; }
@@ -506,6 +509,10 @@ button:disabled {
     linear-gradient(180deg, rgba(9,8,7,.08), rgba(9,8,7,.82)),
     url("../assets/old-site/klezmer-tres-rios.png") center / cover;
   box-shadow: 0 24px 80px rgba(200,154,77,.18);
+}
+.support-paypal-note {
+  margin-top: 18px;
+  color: rgba(239,226,199,.72);
 }
 .support-detail-grid {
   display: grid;
